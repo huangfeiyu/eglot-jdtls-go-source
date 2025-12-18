@@ -51,8 +51,9 @@ Thanks to:
        [dannyfreeman](https://github.com/dannyfreeman)
        [husainaloos](https://github.com/husainaloos)
        [yveszoundi](https://github.com/yveszoundi)
-       [zsxh](https://github.com/zsxh)
-       They worked together to make original code. see https://github.com/yveszoundi/eglot-java/issues/6
+       They worked together to make original code. see also https://github.com/yveszoundi/eglot-java/issues/6
+
+Thanks to [zsxh](https://github.com/zsxh), they help me successfully configure my eglot+jdtls to go to source code.
 
 Author
 
