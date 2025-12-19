@@ -31,14 +31,24 @@
 
 ;;; Code:
 
+(defgroup eglot-jdtls-go-source nil
+  "Dispay document for mouse hover."
+  :prefix "eglot-jdtls-go-source-"
+  :group 'eglot-jdtls-go-source)
+
+(defcustom eglot-jdtls-go-source-lib-source-code-dir ".metadata"
+  "The dir that will be used to store the source code of the Java library."
+  :type 'string)
+
 ;;;###autoload
 (defun eglot-jdtls-go-source-enable ()
   "Register the file name handler to eglot can go to the Java source code when jdtls is used."
   (add-to-list 'file-name-handler-alist '("\\`jdt://" . eglot-jdtls-go-source--jdtls-uri-handler)))
 
 (defun eglot-jdtls-go-source--find-jdtls ()
+  "Find the jdtls server."
   (let ((filter-fn (lambda (server)
-                     (cl-loop for (mode . languageid) in
+                     (cl-loop for (_ . languageid) in
                               (eglot--languages server)
                               when (string= languageid "java")
                               return languageid)))
@@ -54,9 +64,10 @@
     new-path))
 
 (defun eglot-jdtls-go-source--jdtls-uri-handler (_operation &rest args)
-  "Support Eclipse jdtls `jdt://' uri scheme."
+  "Support Eclipse jdtls `jdt://' uri scheme.
+Optional argument ARGS for file name handler."
   (let* ((uri (car args))
-         (cache-dir (expand-file-name ".metadata" (project-root (project-current t))))
+         (cache-dir (expand-file-name eglot-jdtls-go-source-lib-source-code-dir (project-root (project-current t))))
          (source-file
           (expand-file-name
            (eglot-jdtls-go-source--make-path
