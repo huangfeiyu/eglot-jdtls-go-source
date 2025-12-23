@@ -47,6 +47,7 @@
 
 (defun eglot-jdtls-go-source--find-jdtls ()
   "Find the jdtls server."
+  ;; the following code is adapted from zsxh's configuration file.
   (let ((filter-fn (lambda (server)
                      (cl-loop for (_ . languageid) in
                               (eglot--languages server)
@@ -57,6 +58,7 @@
 
 (defun eglot-jdtls-go-source--make-path (root-dir &rest path-elements)
   "Compose a path from a base folder ROOT-DIR and a set of items PATH-ELEMENTS."
+  ;; the following code is adapted from eglot-java
   (let ((new-path          (expand-file-name root-dir))
         (new-path-elements path-elements))
     (dolist (p new-path-elements)
@@ -66,6 +68,7 @@
 (defun eglot-jdtls-go-source--jdtls-uri-handler (_operation &rest args)
   "Support Eclipse jdtls `jdt://' uri scheme.
 Optional argument ARGS for file name handler."
+  ;; the following code is adapted from eglot-java
   (let* ((uri (car args))
          (cache-dir (expand-file-name eglot-jdtls-go-source-lib-source-code-dir (project-root (project-current t))))
          (source-file
