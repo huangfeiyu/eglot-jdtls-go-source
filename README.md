@@ -45,7 +45,7 @@ Contributing
 Feel free to open issues and pull requests for improvements. If you encounter any bugs or have feature requests, please create an issue on the GitHub Issues page.
 
 ## Acknowledgments
-Most of the code are from eglot-java, I make it a package so it is more visible to people who are figuring out how to configure eglot+jdtls to be able to go to Java source code of libraries. 
+Most of the code are adapted from eglot-java, I make it a package so it is more visible to people who are figuring out how to configure eglot+jdtls to be able to go to Java source code of libraries. 
 
 Thanks to: 
        [dannyfreeman](https://github.com/dannyfreeman)
